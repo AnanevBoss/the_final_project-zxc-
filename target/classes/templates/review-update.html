@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #386c8e;
+            border-radius: 4px;
+        }
+        a:hover {
+            background-color: #00b4cc;
+        }
+    </style>
+</head>
+<body>
+    <h2>Update Review</h2>
+    <form action="/reviews/update" method="post" th:object="${review}">
+        Book:
+        <select id="book" name="bookId" th:field="*{book.id}" required>
+            <option th:each="book : ${books}" th:value="${book.id}" th:text="${book.title}"></option>
+        </select><br/>
+
+        User:
+        <select id="user" name="userId" th:field="*{user.user_id}" required>
+            <option th:each="user : ${users}" th:value="${user.user_id}" th:text="${user.login}"></option>
+        </select><br/>
+
+        Review Text: <textarea th:field="*{reviewText}" required></textarea><br/>
+        Rating: <input type="text" th:field="*{rating}" required/><br/>
+        <input type="submit" value="Update"/>
+    </form>
+    <br/>
+    <a href="/reviews">Back to Review List</a>
+    </body>
+</html>
+</form>
+<br/>
+</body>
+</html>
